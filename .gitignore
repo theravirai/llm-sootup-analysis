@@ -1,0 +1,12 @@
+# Maven target directories
+target/
+sootup_analyzer/target/
+
+# Compiled bytecode
+*.class
+
+# IDE and OS files
+.DS_Store
+.idea/
+*.iml
+.vscode/
