@@ -17,6 +17,7 @@ The analyzer is a self-contained Maven project (`sootup_analyzer/pom.xml`) with 
 * `org.soot-oss:sootup.java.core`: Java language abstractions and type hierarchy systems.
 * `org.soot-oss:sootup.java.bytecode`: Bytecode parser translating `.class` files into Jimple IR.
 * `org.soot-oss:sootup.callgraph`: Interprocedural call-graph construction algorithms (CHA, RTA).
+* `org.soot-oss:sootup.spark`: Points-to analysis framework and SPARK on-the-fly call-graph solver.
 
 ---
 
@@ -94,14 +95,18 @@ Scans Jimple method bodies for `InvokableStmt` statements to find where a specif
 ---
 
 #### Mode 5: Call Graph Construction (`callgraph`)
-Constructs an interprocedural Call Graph using Class Hierarchy Analysis (CHA) or Rapid Type Analysis (RTA) starting from an entry point.
+Constructs an interprocedural Call Graph using CHA, RTA, or SPARK starting from an entry point.
 * **Syntax:**
   ```bash
-  mvn exec:java -Dexec.mainClass="SootUpAnalyzer" -Dexec.args="<target-dir> callgraph <algorithm> <entry-class> <entry-method> <return-type> [param-types...]" -q
+  mvn exec:java -Dexec.mainClass="SootUpAnalyzer" -Dexec.args="<target-dir> callgraph <cha | rta | spark> <entry-class> <entry-method> <return-type> [param-types...]" -q
   ```
+* **Supported Algorithms:**
+  1. `cha` (**Class Hierarchy Analysis**): Rapid static dispatch resolution based on declared type hierarchy. Fast, but can over-approximate virtual call targets.
+  2. `rta` (**Rapid Type Analysis**): Filters virtual dispatch candidates to only include classes instantiated anywhere in the reachable program.
+  3. `spark` (**Points-To Analysis / SPARK Solver**): Full pointer analysis (`onFlyCallGraph=true`) computing high-precision on-the-fly call targets based on actual pointer flow sets.
 * **Example:**
   ```bash
-  mvn exec:java -Dexec.mainClass="SootUpAnalyzer" -Dexec.args="path/to/classes callgraph cha com.google.gson.Gson toJson java.lang.String java.lang.Object java.lang.reflect.Type" -q
+  mvn exec:java -Dexec.mainClass="SootUpAnalyzer" -Dexec.args="path/to/classes callgraph spark com.google.gson.Gson toJson java.lang.String java.lang.Object java.lang.reflect.Type" -q
   ```
 
 ---
