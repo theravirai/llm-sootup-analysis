@@ -1,6 +1,12 @@
-# Case Study 1: Google Gson (Issue #2158)
+# Case Study 1: Google Gson (Issue & PR #2158)
 
-## 1. Problem Statement
+| Benchmark Task | Target Repository | Base Commit |Link to PR | Gold Patch Parity |
+| :--- | :--- | :--- | :--- | :---: |
+| `google__gson-2158` | `google/gson` | `796193d0326a2f44bc314bf24262732ea3e64014` | [#2158](https://github.com/google/gson/pull/2158) | **100% Match** |
+
+---
+
+## 1. Problem Statement & Architecture Challenge
 
 In Google Gson (commit `482a229`), primitive type adapters did not perform numeric range validation or type narrowing when serializing `Number` objects. For example, when serializing a `Double` value `1.5` as a `byte`, the adapter directly serialized the number as `"1.5"` instead of throwing an exception or performing a narrowing conversion.
 

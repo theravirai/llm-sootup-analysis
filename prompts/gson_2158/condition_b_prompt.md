@@ -3,6 +3,7 @@
 **Benchmark Task:** `google__gson-2158`  
 **Target Repository:** `google/gson`  
 **Base Commit:** `796193d0326a2f44bc314bf24262732ea3e64014`  
+**Official GitHub PR:** [#2158](https://github.com/google/gson/pull/2158)  
 **Evaluation Condition:** Condition B (Augmented with SootUp Static Analysis Facts)
 
 ---

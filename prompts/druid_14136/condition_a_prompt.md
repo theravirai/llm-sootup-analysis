@@ -3,6 +3,7 @@
 **Benchmark Task:** `apache__druid-14136`  
 **Target Repository:** `apache/druid`  
 **Base Commit:** `a7d4162195a630c380d75516c24229cc23e25271`  
+**Official GitHub PR:** [#14136](https://github.com/apache/druid/pull/14136)  
 **Evaluation Condition:** Condition A (Source Code Only - Baseline)
 
 ---

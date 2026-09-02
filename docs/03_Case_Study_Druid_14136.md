@@ -1,6 +1,12 @@
-# Case Study 2: Apache Druid (Issue #14136)
+# Case Study 2: Apache Druid (Issue & PR #14136)
 
-## 1. Problem Statement
+| Benchmark Task | Target Repository | Base Commit | Link to PR | Gold Patch Parity |
+| :--- | :--- | :--- | :--- | :---: |
+| `apache__druid-14136` | `apache/druid` | `a7d4162195a630c380d75516c24229cc23e25271` | [#14136](https://github.com/apache/druid/pull/14136) | **100% Match** |
+
+---
+
+## 1. Problem Statement & Architecture Challenge
 
 In Apache Druid (commit `a7d4162`), queries specifying zero-length time intervals (where `start == end`, e.g. `"2016-06-27T00:00:11.080Z/2016-06-27T00:00:11.080Z"`) unexpectedly matched and returned all data after that instant instead of matching nothing.
 
