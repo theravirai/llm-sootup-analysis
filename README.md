@@ -65,5 +65,6 @@ mvn exec:java -Dexec.mainClass="SootUpAnalyzer" -Dexec.args="<path-to-target-cla
 ## 4. Documentation Links
 
 * **User Guide & CLI Reference:** [`docs/01_SootUp_Analyzer_User_Guide.md`](docs/01_SootUp_Analyzer_User_Guide.md)
+* **Prompt Generation Guide:** [`prompts/README.md`](prompts/README.md)
 * **Case Study 1 (Google Gson):** [`docs/02_Case_Study_Gson_2158.md`](docs/02_Case_Study_Gson_2158.md)
 * **Case Study 2 (Apache Druid):** [`docs/03_Case_Study_Druid_14136.md`](docs/03_Case_Study_Druid_14136.md)
